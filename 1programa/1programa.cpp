@@ -7,6 +7,7 @@ using std::endl;
 using std::string;
 using std::setw;
 using std::setprecision;
+using std::left;
 
 struct studentas {
     string vardas, pavarde;
@@ -21,9 +22,9 @@ void print(studentas &kin);
 int main()
 {
     studentas studentai[5];
-    for (int i = 0; i < 1; i++)
+    for (int i = 0; i < 2; i++)
         pild(studentai[i]);
-    for (int i = 0; i < 1; i++)
+    for (int i = 0; i < 2; i++)
         print(studentai[i]);
 }
 
