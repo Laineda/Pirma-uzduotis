@@ -69,7 +69,7 @@ void pild(studentas& kint)
 }
 
 void print(studentas& kint) {
-    cout << left << setw(20) << "Pavarde" << setw(20) << "Vardas" << setw(20) << "Galutinis(Vid.)" << endl;
+    cout << left << setw(20) << "Pavarde" << setw(20) << "Vardas" << setw(20) << "Galutinis(Vid.) / Galutinis(Med.)" << endl;
     cout << "------------------------------------------------------------------" << endl;
     cout << setw(20) << kint.pavarde << setw(20) << kint.vardas;
     cout << setw(20) << setprecision(3) << kint.galutinis << endl;
