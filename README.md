@@ -7,6 +7,6 @@
 * Programos papildymas: yra galimybė pasirinkti, jog mokinio gautieji balai už namų darbus ir egzaminą būtų generuojami atsitiktinai;
 
 # v0.2
-*Sukurta programa taip, kad būtų galima duomenis nuskaityti iš failo (sukurtas ir užpildytas failas kursiokai.txt);
-*Programa papildyta taip, kad nuskaičiuos duomenis iš failo, išvedamas galutinis pažymys ir skaičiuojant pagal medianą, ir pagal vidurkį;
-*Studentai surūšiuoti pagal pavardes ir gražiai "išlygiuoti";
+* Sukurta programa taip, kad būtų galima duomenis nuskaityti iš failo (sukurtas ir užpildytas failas kursiokai.txt);
+* Programa papildyta taip, kad nuskaičiuos duomenis iš failo, išvedamas galutinis pažymys ir skaičiuojant pagal medianą, ir pagal vidurkį;
+* Studentai surūšiuoti pagal pavardes ir gražiai "išlygiuoti";
