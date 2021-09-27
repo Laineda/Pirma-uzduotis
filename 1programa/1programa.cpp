@@ -60,11 +60,11 @@ void pildyk(vector<studentas>& kint, int& n) //pildymo funkcija
         sort(kint[i].nd.begin(), kint[i].nd.end()); //surusiuojame ivestus nd
         if (kint[i].nd.size() % 2 != 0)
         {
-            kint[i].mediana = (double)(kint[i].nd[kint[i].nd.size() / 2]); //jei lyginis skaicius kintamuju
+            kint[i].mediana = (double)(kint[i].nd[kint[i].nd.size() / 2]); //jei nelyginis skaicius kintamuju
         }
         else
         {
-            kint[i].mediana = (double)((kint[i].nd[(kint[i].nd.size() - 1) / 2]) + (kint[i].nd[kint[i].nd.size() / 2])) / 2.0; //jei nelyginis skaicius kintamuju
+            kint[i].mediana = (double)((kint[i].nd[(kint[i].nd.size() - 1) / 2]) + (kint[i].nd[kint[i].nd.size() / 2])) / 2.0; //jei lyginis skaicius kintamuju
         }
         kint[i].vidurkis = sum / kint[i].nd.size(); // skaiciuojamas vidurkis
         cout << "Iveskite egzamino pazymi: "; cin >> kint[i].egzaminas;
