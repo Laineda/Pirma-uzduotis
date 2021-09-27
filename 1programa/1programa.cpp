@@ -6,6 +6,9 @@
 #include <vector>
 #include <stdio.h>
 #include <stdlib.h>
+#include <fstream> 
+#include <sstream>
+#include <iterator>
 
 
 using namespace std;
@@ -13,90 +16,93 @@ struct studentas {
     string vardas, pavarde;
     vector <double> nd;
     double egzaminas;
-    double galutinis;
     double vidurkis;
     double mediana;
+    double galutinismed;
+    double galutinisvid;
 };
 
 
-void pildyk(vector<studentas>& kint, int& n) //pildymo funkcija
-{
-    cout << "Iveskite studentu skaiciu:" << endl;
-    cin >> n; //studentu skaicius
-    char ats;
-    double laik;
-    double vidurkis = 0;
-    double mediana = 0;
-    for (int i = 0; i < n; i++) {
-        double sum = 0;
-        kint.push_back(studentas());
-        cout << "Iveskite studento varda ir pavarde: ";
-        cin >> kint[i].vardas >> kint[i].pavarde; //irasomas studento vardas ir pavarde
-
-        cout << "Jeigu norite, pazymius irasyti pats, iveskite raide 'p', jei norite automatiskai sugeneruotu, iveskite raide 'a': ";
-        cin >> ats; // 'p' arba 'a'
-        int x;
-        if (ats == 'a') 
-        {
-            for (int j = 0; j < 5; j++) {
-                x = rand() % 10 + 1;
-                cout << x << " ";
-                kint[i].nd.push_back(x); //irasoma i nd masyva
-                sum += x;
-            }
-            cout << endl;
-        }
-        else
-        {
-            cout << "Iveskite studento namu darbu pazymius: ";
-            while (cin >> laik)
-            {
-                kint[i].nd.push_back(laik); //irasoma i nd masyva
-                sum += laik;
-            }
-        }
-        cin.clear();
-        cin.ignore(10000, '\n');
-        sort(kint[i].nd.begin(), kint[i].nd.end()); //surusiuojame ivestus nd
-        if (kint[i].nd.size() % 2 != 0)
-        {
-            kint[i].mediana = (double)(kint[i].nd[kint[i].nd.size() / 2]); //jei lyginis skaicius kintamuju
-        }
-        else
-        {
-            kint[i].mediana = (double)((kint[i].nd[(kint[i].nd.size() - 1) / 2]) + (kint[i].nd[kint[i].nd.size() / 2])) / 2.0; //jei nelyginis skaicius kintamuju
-        }
-        kint[i].vidurkis = sum / kint[i].nd.size(); // skaiciuojamas vidurkis
-        cout << "Iveskite egzamino pazymi: "; cin >> kint[i].egzaminas;
-        int m;
-        cout << "Jei norite, jog galutinis pazymys butu skaiciuojamas su vidurkiu iveskite 0, o jei su mediana parasykite 1: "; cin >> m; cout << endl;
-        if (m == 0) {
-            kint[i].galutinis = 0.4 * kint[i].vidurkis + 0.6 * kint[i].egzaminas; //skaiciuojama su vidurkiu
-        }
-        else
-        {
-            kint[i].galutinis = 0.4 * kint[i].mediana + 0.6 * kint[i].egzaminas; //skaiciuojama su mediana
-        }
-    }
-
+unsigned int zdz_sk(string const& str) {  //skaiciuojami zodziai
+    stringstream stream(str);
+    return distance(istream_iterator<string>(stream), istream_iterator<string>());
 }
 
-void print(vector<studentas>& kint, int& n) { //spausdinimo funkcija 
-    cout << left << setw(20) << "Pavarde" << setw(20) << "Vardas" << setw(20) << "Galutinis(Vid.) / Galutinis(Med.)" << endl;
-    cout << "--------------------------------------------------------------------------" << endl;
-    for (int i = 0; i < n; i++) {
-        cout << setw(20) << kint[i].pavarde << setw(20) << kint[i].vardas;
-        cout << fixed << setw(20) << setprecision(2) << kint[i].galutinis << endl;
-    }
+double vidurkis(vector<double> nd, double sum) { //vidurkio formule
+    double vidurkis = 0;
+    double n = nd.size();
+    return vidurkis = sum / n;
+}
 
+double mediana(vector<double> nd) {  //medianos formule
+    size_t size = nd.size();
+    if (size == 0) {
+        return 0;  // jei tuscias vektorius
+    }
+    else {
+        sort(nd.begin(), nd.end());
+        if (size % 2 != 0) {
+            return (double)(nd[size / 2]);  //jei nelyginis skaicius 
+        }
+        else {
+            return (double)((nd[(size - 1) / 2]) + (nd[size / 2])) / 2.0;  //jei lyginis
+        }
+    }
+}
+
+void skaityk(vector<studentas>& kint, int* sk) //failo nuskaitymo funkcija
+{
+    int student_counter = 0;
+    int temp;
+    double sum = 0;
+    ifstream failos;
+    string buff;
+    failos.open("kursiokai.txt");
+    if (failos.is_open())
+    {
+        getline(failos >> ws, buff);
+        *sk = zdz_sk(buff) - 3;
+        while (true)
+        {
+
+            kint.resize(kint.size() + 1);
+            failos >> kint.at(student_counter).vardas;
+            if (failos.eof()) { kint.pop_back(); break; }
+            failos >> kint.at(student_counter).pavarde;
+            sum = 0;
+            for (int i = 0; i < *sk; i++) {
+                failos >> temp;
+                sum += temp;
+                kint.at(student_counter).nd.push_back(temp);
+            }
+            failos >> kint.at(student_counter).egzaminas;
+
+            kint.at(student_counter).galutinismed = kint.at(student_counter).egzaminas * 0.6 + mediana(kint.at(student_counter).nd) * 0.4;
+            kint.at(student_counter).galutinisvid = kint.at(student_counter).egzaminas * 0.6 + vidurkis(kint.at(student_counter).nd, sum) * 0.4;
+            student_counter++;
+        }
+    }
+    else { cout << "-\n"; }
+}
+
+void print(vector<studentas>& kint, int n) { //spausdinimo funkcija 
+    ofstream  output;
+    output.open("rezultatai.txt");
+    output << left << setw(20) << "Pavarde" << setw(20) << "Vardas" << setw(20) << "Galutinis(Vid.) / Galutinis(Med.)" << endl;
+    output << "--------------------------------------------------------------------------" << endl;
+    for (int i = 0; i < kint.size(); i++) {
+        output << setw(20) << kint[i].pavarde << setw(20) << kint[i].vardas;
+        output << fixed << setw(20) << setprecision(2) << kint[i].galutinisvid << setw(20) << setprecision(2) << kint[i].galutinismed << endl;
+    }
 }
 
 int main()
 {
     int n;
+    int sk;
     vector <studentas> studentai;
-    pildyk(studentai, n); //ikvieciamos funkcijos
-    print(studentai, n);
+    skaityk(studentai, &sk);
+    print(studentai, sk);
 }
  
 
