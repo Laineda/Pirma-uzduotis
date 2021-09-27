@@ -23,18 +23,18 @@ struct studentas {
 };
 
 
-unsigned int zdz_sk(string const& str) {  //skaiciuojami zodziai
+unsigned int zdz_sk(string const& str) { //skaiciuojami zodziai
     stringstream stream(str);
     return distance(istream_iterator<string>(stream), istream_iterator<string>());
 }
 
-double vidurkis(vector<double> nd, double sum) { //vidurkio formule
+double vidurkis(vector<double> nd, double sum) {  //vidurkio formule
     double vidurkis = 0;
     double n = nd.size();
     return vidurkis = sum / n;
 }
 
-double mediana(vector<double> nd) {  //medianos formule
+double mediana(vector<double> nd) {   //medianos formule
     size_t size = nd.size();
     if (size == 0) {
         return 0;  // jei tuscias vektorius
@@ -50,7 +50,17 @@ double mediana(vector<double> nd) {  //medianos formule
     }
 }
 
-void skaityk(vector<studentas>& kint, int* sk) //failo nuskaitymo funkcija
+bool pagalba(const studentas& lhs, const studentas& rhs)
+{
+    return lhs.pavarde < rhs.pavarde;
+}
+
+void sortas(vector<studentas>& kint)  // rusiavimo funkcija
+{
+    sort(kint.begin(), kint.end(), pagalba);
+}
+
+void skaityk(vector<studentas>& kint, int* sk)  //failo nuskaitymo funkcija
 {
     int student_counter = 0;
     int temp;
@@ -86,23 +96,25 @@ void skaityk(vector<studentas>& kint, int* sk) //failo nuskaitymo funkcija
 }
 
 void print(vector<studentas>& kint, int n) { //spausdinimo funkcija 
-    ofstream  output;
+    ofstream output;
     output.open("rezultatai.txt");
-    output << left << setw(20) << "Pavarde" << setw(20) << "Vardas" << setw(20) << "Galutinis(Vid.) / Galutinis(Med.)" << endl;
-    output << "--------------------------------------------------------------------------" << endl;
+    output << left << setw(22) << "Pavarde" << setw(22) << "Vardas" << setw(22) << "Galutinis(Vid.) / Galutinis(Med.)" << endl;
+    output << "-----------------------------------------------------------------------------------------" << endl;
     for (int i = 0; i < kint.size(); i++) {
-        output << setw(20) << kint[i].pavarde << setw(20) << kint[i].vardas;
-        output << fixed << setw(20) << setprecision(2) << kint[i].galutinisvid << setw(20) << setprecision(2) << kint[i].galutinismed << endl;
+        output << fixed << left << setw(22) << kint[i].pavarde << setw(22) << kint[i].vardas;
+        output << setw(22) << setprecision(2) << kint[i].galutinisvid << setw(22) << setprecision(2) << kint[i].galutinismed << endl;
     }
+    return;
 }
 
 int main()
 {
-    int n;
     int sk;
     vector <studentas> studentai;
     skaityk(studentai, &sk);
+    sortas(studentai);
     print(studentai, sk);
+    return 0;
 }
  
 

@@ -1,0 +1,5 @@
+Pavarde               Vardas                Galutinis(Vid.) / Galutinis(Med.)
+-----------------------------------------------------------------------------------------
+Arvydas               Sabonis               8.84                  9.00                  
+Jonas                 Jonaitis              7.88                  8.20                  
+Rimas                 Kurtinaitis           6.32                  6.40                  
