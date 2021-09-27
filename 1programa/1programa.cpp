@@ -14,6 +14,8 @@ struct studentas {
     vector <double> nd;
     double egzaminas;
     double galutinis;
+    double vidurkis;
+    double mediana;
 };
 
 
@@ -58,22 +60,22 @@ void pildyk(vector<studentas>& kint, int& n) //pildymo funkcija
         sort(kint[i].nd.begin(), kint[i].nd.end()); //surusiuojame ivestus nd
         if (kint[i].nd.size() % 2 != 0)
         {
-            mediana = (double)(kint[i].nd[kint[i].nd.size() / 2]); //jei lyginis skaicius kintamuju
+            kint[i].mediana = (double)(kint[i].nd[kint[i].nd.size() / 2]); //jei lyginis skaicius kintamuju
         }
         else
         {
-            mediana = (double)((kint[i].nd[(kint[i].nd.size() - 1) / 2]) + (kint[i].nd[kint[i].nd.size() / 2])) / 2.0; //jei nelyginis skaicius kintamuju
+            kint[i].mediana = (double)((kint[i].nd[(kint[i].nd.size() - 1) / 2]) + (kint[i].nd[kint[i].nd.size() / 2])) / 2.0; //jei nelyginis skaicius kintamuju
         }
-        vidurkis = sum / kint[i].nd.size(); // skaiciuojamas vidurkis
+        kint[i].vidurkis = sum / kint[i].nd.size(); // skaiciuojamas vidurkis
         cout << "Iveskite egzamino pazymi: "; cin >> kint[i].egzaminas;
         int m;
         cout << "Jei norite, jog galutinis pazymys butu skaiciuojamas su vidurkiu iveskite 0, o jei su mediana parasykite 1: "; cin >> m; cout << endl;
         if (m == 0) {
-            kint[i].galutinis = 0.4 * vidurkis + 0.6 * kint[i].egzaminas; //skaiciuojama su vidurkiu
+            kint[i].galutinis = 0.4 * kint[i].vidurkis + 0.6 * kint[i].egzaminas; //skaiciuojama su vidurkiu
         }
         else
         {
-            kint[i].galutinis = 0.4 * mediana + 0.6 * kint[i].egzaminas; //skaiciuojama su mediana
+            kint[i].galutinis = 0.4 * kint[i].mediana + 0.6 * kint[i].egzaminas; //skaiciuojama su mediana
         }
     }
 
