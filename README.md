@@ -11,3 +11,4 @@
 
 # v0.3
 * Atliktas versijos (v0.2) kodo reorganizavimas (refactoring'as): funkcijos, nauji duomenų tipai (struct’ūros) perkelktos į antraštinius (angl. header (*.h)) failus;
+* Failo skaityme panaudotas išimčių valdymas (tikrina ar gerai įvestas failo pavadinimas);
