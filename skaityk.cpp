@@ -6,16 +6,19 @@
 #include <string>
 #include <fstream> 
 
-void skaityk(std::vector<studentas>& kint, int* sk) 
+void skaityk(std::vector<studentas>& kint, int* sk)
 {
     int student_counter = 0;
     int temp;
     double sum = 0;
     std::ifstream failos;
     std::string buff;
-    failos.open("studentai10000.txt.txt");
-    if (failos.is_open())
-    {
+    try {
+        failos.open("studentai10000.txt");
+
+        if (!failos.is_open())
+            throw 0;
+
         std::getline(failos >> std::ws, buff);
         *sk = zdz_sk(buff) - 3;
         while (true)
@@ -38,5 +41,9 @@ void skaityk(std::vector<studentas>& kint, int* sk)
             student_counter++;
         }
     }
-    else { std::cout << "-\n"; }
+    catch (int e)
+    {
+        std::cout << "Netesingas failo pavadinimas " << e << std::endl;
+    }
 }
+
