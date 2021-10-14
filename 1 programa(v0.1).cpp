@@ -46,8 +46,6 @@ int stud_generavimas(vector<int> pazymiai)
     cout << "Iveskite studentu kieki: " << endl;
     cin >> kiekis;
     string pavadinimas = "Studentai_" + to_string(kiekis) + ".txt";
-    auto start = chrono::high_resolution_clock::now();
-    auto pr = start;
     ofstream out_data(pavadinimas);
     vector<int> skaiciai;
     studentas stud;
@@ -94,5 +92,49 @@ int main()
     int kiekis = stud_generavimas(skaiciai);
     vector<studentas> studentai;
     skaitymas(studentai, kiekis);
+    vector<studentas> kietiakiai;
+    vector<studentas> vargsiukai;
+    int kiet = 0;
+    int varg = 0;
+
+    for (int i = 0; i < kiekis; i++)
+    {
+        float paz = 5.00;
+        if (studentai.at(i).galutinis < paz)
+        {
+            vargsiukai.push_back(studentai.at(i));
+            varg++;
+        }
+    }
+    for (int j = 0; j < kiekis; j++)
+    {
+        float paz = 5.00;
+        if (studentai.at(j).galutinis >= paz)
+        {
+            kietiakiai.push_back(studentai.at(j));
+            kiet++;
+        }
+    }
+
+    string pav;
+    pav = "vargsiukai_" + to_string(kiekis) + ".txt";
+    ofstream varg_failas(pav);
+    for (int i = 0; i < kiekis; i++)
+    {
+        float paz = 5.00;
+        if (studentai.at(i).galutinis < paz) {
+            varg_failas << studentai.at(i).vardas << setw(20) << studentai.at(i).pavarde << setw(18) << studentai.at(i).galutinis << endl;
+
+        }
+    }
+
+    pav = "kietiakiai_" + to_string(kiekis) + ".txt";
+    ofstream kiet_failas(pav);
+    for (int j = 0; j < kiekis; j++) {
+        float paz = 5.00;
+        if (studentai.at(j).galutinis >= paz) {
+            kiet_failas << studentai.at(j).vardas << setw(20) << studentai.at(j).pavarde << setw(18) << studentai.at(j).galutinis << endl;
+        }
+    }
 
 }
