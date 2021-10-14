@@ -12,3 +12,7 @@
 # v0.3
 * Atliktas versijos (v0.2) kodo reorganizavimas (refactoring'as): funkcijos, nauji duomenų tipai (struct’ūros) perkelktos į antraštinius (angl. header (*.h)) failus;
 * Failo skaityme panaudotas išimčių valdymas (tikrina ar gerai įvestas failo pavadinimas);
+
+# v0.4
+* Sukurta programa (iš versijos v0.1), kuri sugeneruoja atsitiktinius studentų sąrašų failus (pridėti sugeneruoti sąrašai: 1 000, 10 000, 100 000, 1 000 000, 10 000 000);
+* 
