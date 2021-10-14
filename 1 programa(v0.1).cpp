@@ -72,8 +72,6 @@ void skaitymas(vector<studentas>& stud, int kiekis)
     failoSkait.open(pavadinimas);
     if (failoSkait.is_open())
     {
-        auto start = chrono::high_resolution_clock::now();
-        auto st = start;
         getline(failoSkait >> ws, buff);
         while (studentu_sk < kiekis)
         {
