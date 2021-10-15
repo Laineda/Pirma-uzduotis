@@ -4,8 +4,6 @@
 #include <algorithm>
 #include <numeric>
 #include <vector>
-#include <stdio.h>
-#include <stdlib.h>
 #include <chrono>
 #include <fstream>
 
@@ -19,12 +17,12 @@ struct studentas {
 };
 
 
-int gen_random()
+int gen_random() //random skaiciaus generavimo funkcija 
 {
     return rand() % 10 + 1;
 }
 
-vector<int> auto_marks(int kiek_pazymiu)
+vector<int> auto_marks(int kiek_pazymiu) //pazymiu funkcija 
 {
     vector<int> skaiciai;
     for (int i = 0; i < kiek_pazymiu; i++)
@@ -34,13 +32,13 @@ vector<int> auto_marks(int kiek_pazymiu)
     return skaiciai;
 }
 
-float sk_galut(vector<int> skaiciai) {
+float sk_galut(vector<int> skaiciai) { //galutinio pazymio skaiciavimo funkcija 
     studentas stud;
     stud.galutinis = 0.4 * accumulate(skaiciai.begin(), skaiciai.end(), 0) / skaiciai.size() + 0.6 * gen_random();
     return stud.galutinis;
 }
 
-int stud_generavimas(vector<int> pazymiai)
+int stud_generavimas(vector<int> pazymiai) //studentu generavimo funkcija 
 {
     int kiekis;
     cout << "Iveskite studentu kieki: " << endl;
@@ -49,7 +47,7 @@ int stud_generavimas(vector<int> pazymiai)
     auto start = chrono::high_resolution_clock::now();
     ofstream out_data(pavadinimas);
     vector<int> skaiciai;
-    studentas stud;
+
     out_data << setw(20) << left << "Vardas"
         << setw(20) << left << "Pavarde"
         << setw(20) << left << "Galutinis(Vid.)" << endl;
@@ -68,7 +66,7 @@ int stud_generavimas(vector<int> pazymiai)
     return kiekis;
 }
 
-void skaitymas(vector<studentas>& stud, int kiekis)
+void skaitymas(vector<studentas>& stud, int kiekis) //faiko skaitymo funkcija 
 {
     int studentu_sk = 0;
     ifstream failoSkait;
