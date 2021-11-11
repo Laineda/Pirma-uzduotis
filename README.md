@@ -18,3 +18,6 @@
 * Programos papildymas: studentai surūšiuoti (padalinti) į dvi kategorijas: studentai, kurių galutinis balas < 5.0 pavadinti “vargšiukai”, studentai, kurių galutinis balas >= 5.0 pavadinti "kietiakiai". Surūšiuoti studentai išvesti į du naujus failus;
 * Programos papildymas: atlikita programos veikimo greičio (spartos) analizė: t.y. išmatuota programos sparta, išskiriant kiek laiko užtruko kiekvienas iš žemiau išvardintų žingsnių: failų kūrimas, duomenų nuskaitymas iš failų, studentų rūšiavimas į dvi grupes/kategorijas, surūšiuotų studentų išvedimas į du naujus failus;
 ![laikas](https://user-images.githubusercontent.com/90093949/141378043-35d65fd8-b774-443c-b5ca-849e0799214b.PNG)
+
+# v0.5
+* 
