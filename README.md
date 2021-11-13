@@ -20,4 +20,7 @@
 ![laikas](https://user-images.githubusercontent.com/90093949/141378043-35d65fd8-b774-443c-b5ca-849e0799214b.PNG)
 
 # v0.5
-* 
+* v0.4 vektorių konteineriai perkeisti į list'o konteinerius;
+* atlikta veikimo greičio (spartos) analizė: kiek laiko užtruko duomenų nuskaitymas iš failų ir studentų surūšiavimas į dvi grupes/kategorijas;
+Testavimo sistemos parametrai: CPU 2.50GHz RAM 8.00 GB HDD (SSD)
+
