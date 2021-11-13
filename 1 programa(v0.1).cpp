@@ -12,7 +12,6 @@
 using namespace std;
 struct studentas {
     string vardas, pavarde;
-    vector <int> nd;
     float egzaminas;
     float galutinis;
 };
@@ -33,17 +32,17 @@ int gen_random() //random skaiciaus generatorius
 
 vector<int> auto_marks(int kiek_pazymiu) //automatinis pazymiu generatorius 
 {
-    vector<int> skaiciai;
+    vector<int> nd;
     for (int i = 0; i < kiek_pazymiu; i++)
     {
-        skaiciai.push_back(gen_random());
+        nd.push_back(gen_random());
     }
-    return skaiciai;
+    return nd;
 }
 
-float sk_galut(vector<int> skaiciai) { //skaiciuoja galutini pazymi
+float sk_galut(vector<int> nd) { //skaiciuoja galutini pazymi
     studentas stud;
-    stud.galutinis = 0.4 * accumulate(skaiciai.begin(), skaiciai.end(), 0) / skaiciai.size() + 0.6 * gen_random();
+    stud.galutinis = 0.4 * accumulate(nd.begin(), nd.end(), 0) / nd.size() + 0.6 * gen_random();
     return stud.galutinis;
 }
 
@@ -77,17 +76,18 @@ void skaitymas(list<studentas>& stud, int kiekis) //nuskaitymas
     string pavadinimas = "Studentai_" + to_string(kiekis) + ".txt";
     string buff;
     failoSkait.open(pavadinimas);
+    int a;
     if (failoSkait.is_open())
     {
         auto start = chrono::high_resolution_clock::now();
         getline(failoSkait >> ws, buff);
-        while (studentu_sk < kiekis)
+        while (failoSkait)
         {
-            studentas stud;
-            failoSkait >> stud.vardas;
-            failoSkait >> stud.pavarde;
-            failoSkait >> stud.galutinis;
-            studentu_sk++;
+            studentas stud_;
+            failoSkait >> stud_.vardas;
+            failoSkait >> stud_.pavarde;
+            failoSkait >> stud_.galutinis;
+            stud.push_back(stud_);
         }
         auto end = chrono::high_resolution_clock::now();
         chrono::duration<double> skirt = end - start;
@@ -141,20 +141,13 @@ int main()
 
         }
     }
-    auto end1 = chrono::high_resolution_clock::now();
-    chrono::duration<double> skirt1 = end1 - start1;
-    cout << to_string(kiekis) + " irasu vargsiuku irasymo i faila laikas: " << skirt1.count() << " s\n";
-
+    
     pav = "kietiakiai_" + to_string(kiekis) + ".txt";
     ofstream kiet_failas(pav);
-    auto start2 = chrono::high_resolution_clock::now();
     for (int j = 0; j < kiekis; j++) {
         float paz = 5.00;
         if (get(studentai, j).galutinis >= paz) {
             kiet_failas << get(studentai, j).vardas << setw(20) << get(studentai, j).pavarde << setw(18) << get(studentai, j).galutinis << endl;
         }
     }
-    auto end2 = chrono::high_resolution_clock::now();
-    chrono::duration<double> skirt2 = end2 - start2;
-    cout << to_string(kiekis) + " irasu keteku irasymo i faila laikas : " << skirt2.count() << " s\n";
 }
