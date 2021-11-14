@@ -17,10 +17,11 @@
 * Sukurta programa (iš versijos v0.1), kuri sugeneruoja atsitiktinius studentų sąrašų failus (pridėti sugeneruoti sąrašai: 1 000, 10 000, 100 000, 1 000 000, 10 000 000);
 * Programos papildymas: studentai surūšiuoti (padalinti) į dvi kategorijas: studentai, kurių galutinis balas < 5.0 pavadinti “vargšiukai”, studentai, kurių galutinis balas >= 5.0 pavadinti "kietiakiai". Surūšiuoti studentai išvesti į du naujus failus;
 * Programos papildymas: atlikita programos veikimo greičio (spartos) analizė: t.y. išmatuota programos sparta, išskiriant kiek laiko užtruko kiekvienas iš žemiau išvardintų žingsnių: failų kūrimas, duomenų nuskaitymas iš failų, studentų rūšiavimas į dvi grupes/kategorijas, surūšiuotų studentų išvedimas į du naujus failus;
-![laikas](https://user-images.githubusercontent.com/90093949/141378043-35d65fd8-b774-443c-b5ca-849e0799214b.PNG)
+![laikas1](https://user-images.githubusercontent.com/90093949/141686907-72348363-7a5e-48ce-8d18-3bb38d68dd9c.PNG)
 
 # v0.5
 * v0.4 vektorių konteineriai perkeisti į list'o konteinerius;
 * atlikta veikimo greičio (spartos) analizė: kiek laiko užtruko duomenų nuskaitymas iš failų ir studentų surūšiavimas į dvi grupes/kategorijas;
 Testavimo sistemos parametrai: CPU 2.50GHz RAM 8.00 GB HDD (SSD)
+![laikas2](https://user-images.githubusercontent.com/90093949/141686914-cf214a2b-d967-42d5-9017-a424868235d6.PNG)
 
