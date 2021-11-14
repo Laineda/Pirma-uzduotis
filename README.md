@@ -24,4 +24,5 @@
 * atlikta veikimo greičio (spartos) analizė: kiek laiko užtruko duomenų nuskaitymas iš failų ir studentų surūšiavimas į dvi grupes/kategorijas;
 Testavimo sistemos parametrai: CPU 2.50GHz RAM 8.00 GB HDD (SSD)
 ![laikas2](https://user-images.githubusercontent.com/90093949/141686914-cf214a2b-d967-42d5-9017-a424868235d6.PNG)
+Išvada: naudojant vector konteinerius, sparta daug didesnė (nei naudojant list konteinerius);
 
