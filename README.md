@@ -31,3 +31,8 @@ Išvada: naudojant vector konteinerius, sparta daug didesnė (nei naudojant list
 - 1 strategija: Bendro studentai konteinerio (vector ir list tipų) skaidymas (rūšiavimas) į du naujus to paties tipo konteinerius: "vargšiukų" ir "kietiakų";
 - 2 strategija: Bendro studentų konteinerio (vector ir list) skaidymas (rūšiavimas) panaudojant tik vieną naują konteinerį: "vargšiukai";
 * Programos efektyvumui pritaikytas algoritmas std::remove_if;
+
+# Naudojimosi instrukcija
+1. Parsisiųsti v1.0.cpp, Funkcijos.cpp ir Funkcijos.h failus;
+2. Juos atidaryti naudojant tinkamas programas (Visual Studio 2019 (mano naudota), Code::Block ir t.t.);
+3. Paleisti programą;
